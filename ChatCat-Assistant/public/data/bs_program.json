@@ -1,0 +1,360 @@
+{
+  "bs_program": {
+    "foundation_requirements": [
+      {
+        "category": "U of A Foundation Requirements",
+        "courses": [
+          {
+            "name": "Freshman Composition",
+            "course_number": "ENGL 101",
+            "units": 3,
+            "offerings": "F/SP/SU",
+            "notes": "ENGL 107 or 109H allowed"
+          },
+          {
+            "name": "Freshman Composition",
+            "course_number": "ENGL 102", 
+            "units": 3,
+            "offerings": "F/SP/SU",
+            "notes": "ENGL 108 or 109H allowed"
+          }
+        ]
+      }
+    ],
+    "general_education": [
+      {
+        "category": "General Education Requirements: Connections Program",
+        "note": "For students admitted Spring 2022 or later",
+        "courses": [
+          {
+            "name": "Intro to the Gen-ed Experience",
+            "course_number": "UNIV 101",
+            "units": 1,
+            "offerings": "F/SP/SU"
+          },
+          {
+            "name": "Exploring Perspectives - Artist",
+            "course_number": "Various",
+            "units": 3,
+            "offerings": "F/SP/SU"
+          },
+          {
+            "name": "Exploring Perspectives - Humanist", 
+            "course_number": "Various",
+            "units": 3,
+            "offerings": "F/SP/SU"
+          },
+          {
+            "name": "Exploring Perspectives - Social Scientist",
+            "course_number": "Various", 
+            "units": 3,
+            "offerings": "F/SP/SU"
+          },
+          {
+            "name": "Building Connections",
+            "course_number": "Various",
+            "units": 3,
+            "offerings": "F/SP/SU"
+          },
+          {
+            "name": "Building Connections",
+            "course_number": "Various",
+            "units": 3,
+            "offerings": "F/SP/SU"
+          },
+          {
+            "name": "Building Connections", 
+            "course_number": "Various",
+            "units": 3,
+            "offerings": "F/SP/SU"
+          },
+          {
+            "name": "Gen-ed Portfolio",
+            "course_number": "UNIV 301",
+            "units": 1,
+            "offerings": "F/SP/SU"
+          }
+        ]
+      }
+    ],
+    "core_science_math": [
+      {
+        "name": "General Chemistry I",
+        "course_number": "CHEM 151 or CHEM 161/163",
+        "units": 4,
+        "offerings": "F/SP/SU",
+        "prerequisites": "MATH 112 or PPL 60",
+        "notes": "Fulfills Gen-ed: EP: Natural Scientist"
+      },
+      {
+        "name": "Additional Science Course",
+        "course_number": "CHEM 152, MSE 110 or MCB 181R&L",
+        "units": 4,
+        "offerings": "F/SP/SU", 
+        "prerequisites": "CHEM 151/varying"
+      },
+      {
+        "name": "Introductory Mechanics",
+        "course_number": "PHYS 141",
+        "units": 4,
+        "offerings": "F/SP/SU",
+        "prerequisites": "MATH 122B or 125",
+        "notes": "PHYS 161H allowed"
+      },
+      {
+        "name": "Intro Electricity and Magnetism",
+        "course_number": "PHYS 241",
+        "units": 4,
+        "offerings": "F/SP/SU",
+        "prerequisites": "PHYS 141, MATH 129",
+        "notes": "PHYS 261H allowed"
+      },
+      {
+        "name": "Calculus I",
+        "course_number": "MATH 125 or MATH 122A/B",
+        "units": "3/5",
+        "offerings": "F/SP or F/SP/SU",
+        "prerequisites": "Appropriate math placement"
+      },
+      {
+        "name": "Calculus II",
+        "course_number": "MATH 129",
+        "units": 3,
+        "offerings": "F/SP/SU",
+        "prerequisites": "MATH 122B or MATH 125"
+      },
+      {
+        "name": "Discrete Math",
+        "course_number": "MATH 243",
+        "units": 3,
+        "offerings": "F/SP/SU",
+        "prerequisites": "Math 129"
+      },
+      {
+        "name": "MATH/PHYS/DATA Elective",
+        "course_number": "MATH 223, 254 or 313",
+        "units": 3,
+        "offerings": "F/SP/SU"
+      }
+    ],
+    "lower_division_engineering": [
+      {
+        "name": "Intro to Engineering",
+        "course_number": "ENGR 102 (A/B)",
+        "units": 3,
+        "offerings": "A(F)/B(SP)",
+        "grade_requirement": "C or higher"
+      },
+      {
+        "name": "Intro to Software Engineering",
+        "course_number": "SFWE 101",
+        "units": 3,
+        "offerings": "F/SP",
+        "corequisites": "MATH 122B or 125",
+        "grade_requirement": "C or higher"
+      },
+      {
+        "name": "Sophomore Colloquium",
+        "course_number": "SFWE 201",
+        "units": 1,
+        "offerings": "F/SP",
+        "prerequisites": "SFWE 101 or ECE 101",
+        "grade_requirement": "C or higher"
+      },
+      {
+        "name": "Computer Programming I",
+        "course_number": "ECE 101",
+        "units": 4,
+        "offerings": "F/SP",
+        "prerequisites": "MATH 122B or MATH 125",
+        "notes": "ECE 175 equivalent",
+        "grade_requirement": "C or higher"
+      },
+      {
+        "name": "Computer Programming II",
+        "course_number": "ECE 201",
+        "units": 3,
+        "offerings": "F/SP",
+        "corequisites": "MATH 120R",
+        "notes": "ECE 275 equivalent",
+        "grade_requirement": "C or higher"
+      },
+      {
+        "name": "Digital Logic",
+        "course_number": "ECE 274A",
+        "units": 4,
+        "offerings": "F/SP",
+        "prerequisites": "ECE 101",
+        "grade_requirement": "C or higher"
+      },
+      {
+        "name": "Object Oriented Modeling & Design",
+        "course_number": "SIE 277",
+        "units": 3,
+        "offerings": "F/SP",
+        "prerequisites": "ECE 101",
+        "grade_requirement": "C or higher"
+      }
+    ],
+    "upper_division_engineering": [
+      {
+        "name": "SW Requirements Analysis & Test",
+        "course_number": "SFWE 301",
+        "units": 3,
+        "offerings": "F",
+        "prerequisites": "ECE 201 or consent of instructor",
+        "grade_requirement": "C or higher",
+        "advanced_standing_required": true
+      },
+      {
+        "name": "SW Design Process",
+        "course_number": "SFWE 302/405",
+        "units": 3,
+        "offerings": "SP",
+        "prerequisites": "SFWE 301",
+        "grade_requirement": "C or higher",
+        "advanced_standing_required": true
+      },
+      {
+        "name": "Software Assurance and Security",
+        "course_number": "SFWE 401",
+        "units": 3,
+        "offerings": "SP",
+        "prerequisites": "ECE 201",
+        "grade_requirement": "C or higher",
+        "advanced_standing_required": true
+      },
+      {
+        "name": "Software DevOps",
+        "course_number": "SFWE 402",
+        "units": 4,
+        "offerings": "SP",
+        "prerequisites": "ECE 201",
+        "grade_requirement": "C or higher",
+        "advanced_standing_required": true
+      },
+      {
+        "name": "Software Project Management",
+        "course_number": "SFWE 403",
+        "units": 3,
+        "offerings": "F",
+        "prerequisites": "SFWE 301",
+        "grade_requirement": "C or higher",
+        "advanced_standing_required": true
+      },
+      {
+        "name": "SW Preceptor",
+        "course_number": "SFWE 491",
+        "units": 1,
+        "offerings": "F/SP",
+        "prerequisites": "Department Consent",
+        "grade_requirement": "C or higher",
+        "advanced_standing_required": true
+      },
+      {
+        "name": "Engineering Probability & Statistics",
+        "course_number": "SIE 305",
+        "units": 3,
+        "offerings": "F/SP/SU",
+        "prerequisites": "MATH 129",
+        "grade_requirement": "C or higher",
+        "advanced_standing_required": true
+      },
+      {
+        "name": "Engineering Ethics",
+        "course_number": "ECE 311",
+        "units": 1,
+        "offerings": "F/SP",
+        "grade_requirement": "C or higher",
+        "advanced_standing_required": true
+      },
+      {
+        "name": "Computer Organization",
+        "course_number": "ECE 369a",
+        "units": 4,
+        "offerings": "F",
+        "prerequisites": "ECE 101 & ECE 274A",
+        "notes": "CSC 252 allowed",
+        "grade_requirement": "C or higher",
+        "advanced_standing_required": true
+      },
+      {
+        "name": "Analysis of Discrete Structures & Algorithms",
+        "course_number": "CSC 355",
+        "units": 3,
+        "offerings": "F/SP",
+        "prerequisites": "ECE 201 & MATH 243",
+        "notes": "CSC 345 allowed",
+        "grade_requirement": "C or higher",
+        "advanced_standing_required": true
+      },
+      {
+        "name": "SFWE Technical Elective 1",
+        "course_number": "Varying",
+        "units": 3,
+        "offerings": "Varying",
+        "grade_requirement": "C or higher",
+        "advanced_standing_required": true
+      },
+      {
+        "name": "SFWE Technical Elective 2",
+        "course_number": "Varying",
+        "units": 3,
+        "offerings": "Varying",
+        "grade_requirement": "C or higher",
+        "advanced_standing_required": true
+      },
+      {
+        "name": "SFWE Technical Elective 3",
+        "course_number": "Varying",
+        "units": 3,
+        "offerings": "Varying",
+        "grade_requirement": "C or higher",
+        "advanced_standing_required": true
+      },
+      {
+        "name": "SFWE Technical Elective 4",
+        "course_number": "Varying",
+        "units": 3,
+        "offerings": "Varying",
+        "grade_requirement": "C or higher",
+        "advanced_standing_required": true
+      },
+      {
+        "name": "SFWE Technical Elective 5",
+        "course_number": "Varying",
+        "units": 3,
+        "offerings": "Varying",
+        "grade_requirement": "C or higher",
+        "advanced_standing_required": true
+      },
+      {
+        "name": "Engineering Senior Design",
+        "course_number": "ENGR 498A",
+        "units": 3,
+        "offerings": "F/SP",
+        "prerequisites": "SIE 277 & SFWE 301, 90+ units",
+        "corequisites": "SFWE 403",
+        "grade_requirement": "C or higher",
+        "advanced_standing_required": true
+      },
+      {
+        "name": "Engineering Senior Design",
+        "course_number": "ENGR 498B", 
+        "units": 3,
+        "offerings": "F/SP",
+        "prerequisites": "ENGR 498A",
+        "grade_requirement": "C or higher",
+        "advanced_standing_required": true
+      }
+    ],
+    "important_notes": [
+      "All CSC courses (except 355) prioritize their own majors and minors for enrollment",
+      "Core courses listed are recommended for planning - failure to enroll by a particular semester could result in delayed graduation",
+      "No substitutions are accepted for any courses",
+      "See advisement report in UAccess Student Center under 'Advising' for full degree requirements",
+      "Upper division courses require Advanced Standing as per College of Engineering guidelines",
+      "All upper and lower division engineering courses must be completed with a C or higher grade"
+    ]
+  }
+}
