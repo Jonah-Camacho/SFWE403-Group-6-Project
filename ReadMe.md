@@ -4,14 +4,14 @@ A bash script is included in the files. It is good practice to read the script b
 
 ## To install and/or run the server using the script:
 ```
-**./start.sh**
+./start.sh
 ```
 ## If you prefer to not use the script
 ### Installation: 
 ```
-**npm install**
+npm install
 ```
 ### Run the Server:
 ```
-**npm run dev**
+npm run dev
 ```
