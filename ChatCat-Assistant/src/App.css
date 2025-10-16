@@ -4,29 +4,31 @@
   align-items: center;
   background-color: #f7f8fa;
   min-height: 100vh;
+  max-height: 100vh;
   font-family: Arial, sans-serif;
   padding: 0;
   margin: 0;
+  overflow: hidden;
 }
 
 .header {
   display: flex;
   align-items: center;
-  gap: 12px;
   background: #AB0520;
   color: white;
   width: 100vw;
-  padding: 12px 0px;
 }
 
-.header2 {
+.header-left{
+  margin-left: 1vw;
+}
+
+.header-center{
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 12px;
-  background: #0C234B;
-  color: white;
-  width: 100vw;
-  padding: 12px 0px;
+  font-size: 36;
+  width: 50vw;
 }
 
 .logo.az {
@@ -40,8 +42,8 @@
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  width: 90%;
-  max-width: 600px;
+  width: 100%;
+  max-width: 40vw;
   height: 75vh;
   margin-top: 20px;
   overflow: hidden;

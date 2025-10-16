@@ -26,15 +26,18 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <header className="header">
-        <h2>      </h2>
+<>
+    <header className="header">
+      <div className="header-left">
         <img src={azLogo} className="logo az" alt="AZ logo" />
-        <h2> Software Engineering ChatCat Assistant</h2>
-      </header>
-      <header2 className="header2">
-      </header2>
+      </div>
 
+      <div className="header-center">
+        <h1>ChatCat Assistant</h1>
+      </div>
+    </header>
+
+    <div className="app">
       <div className="chat-container">
         <div className="chat-box">
           {messages.map((msg, index) => (
@@ -56,6 +59,7 @@ function App() {
         </div>
       </div>
     </div>
+</>
   );
 }
 
