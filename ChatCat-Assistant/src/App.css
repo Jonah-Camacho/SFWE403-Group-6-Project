@@ -29,7 +29,6 @@ html, body, #root {
   top: 0;
   left: 0;
   z-index: 100;
-
 }
 
 .header-left,
@@ -176,4 +175,22 @@ html, body, #root {
 
 .input-area button:hover {
   background-color: #005fcc;
+}
+
+.char-Counter {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #555;
+  text-align: right;
+}
+
+.charCounter.error{
+  color: red;
+}
+
+.error-message {
+  color: red;
+  margin-top: 5px;
+  font-size: 14px;
+  text-align: right;
 }
