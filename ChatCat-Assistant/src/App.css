@@ -149,11 +149,13 @@ html, body, #root {
   box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.04);
   box-sizing: border-box;
   pointer-events: auto;
+  background-color: ghostwhite;
 }
 
 .input-area input {
   flex: 1;
   padding: 10px;
+  margin-left: 8px;
   border: none;
   background-color: ghostwhite;
   color: #111111;
