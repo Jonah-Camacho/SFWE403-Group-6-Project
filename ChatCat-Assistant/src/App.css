@@ -104,10 +104,12 @@ html, body, #root {
 
 .message.user {
   justify-content: flex-end;
+  overflow-wrap: break-word;
 }
 
 .message.bot {
   justify-content: flex-start;
+  overflow-wrap: break-word;
 }
 
 .bubble {
