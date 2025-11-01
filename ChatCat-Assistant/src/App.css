@@ -28,14 +28,16 @@ html, body, #root {
   padding: 0 2vw;
   color: white;
   width: 100%;
-  min-height: 8vh; /* scales vertically */
+  min-height: 8vh;
   height: clamp(60px, 8vh, 80px);
   box-sizing: border-box;
   top: 0;
   left: 0;
   z-index: 100;
+  gap: 1rem;
 }
 
+/* Let flexbox handle centering */
 .header-left,
 .header-right {
   display: flex;
@@ -43,27 +45,70 @@ html, body, #root {
   flex: 0 0 auto;
 }
 
+.header-center {
+  flex: 1;
+  display: flex;
+  transform: translateX(-15%);
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Title scales responsively and wraps gracefully */
 .header-center h1 {
   margin: 0;
   padding: 0;
-  transform: translateX(-33%);
   font-size: clamp(18px, 2.2vw + 0.8vh, 36px);
   line-height: 1.2;
   font-weight: 700;
   color: white;
   text-align: center;
   white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
-
-.logo-settings {
-  width: clamp(24px, 2.5vw + 0.5vh, 36px);
-  height: clamp(24px, 2.5vw + 0.5vh, 36px);
-}
-
+/* Logo scaling */
 .logo.az {
-  height: clamp(30px, 4vh, 50px);
+  height: clamp(30px, 4vh + 1vw, 60px);
+  width: auto;
   border-radius: 8px;
+  transition: height 0.2s ease, transform 0.2s ease;
+}
+
+.logo.az:hover {
+  transform: scale(1.05);
+}
+
+/* Settings icon scaling */
+.logo-settings {
+  width: clamp(24px, 2.5vw + 0.5vh, 40px);
+  height: auto;
+  transition: transform 0.2s ease;
+}
+
+.logo-settings:hover {
+  transform: rotate(10deg) scale(1.1);
+}
+
+/* Prevent overlap on small screens */
+@media (max-width: 600px) {
+  .header-center h1 {
+    font-size: clamp(14px, 4vw, 18px);
+    white-space: normal; /* allow wrapping */
+  }
+
+  .header {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .header-left, .header-right {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
 }
 
 /* === Chat Container === */
