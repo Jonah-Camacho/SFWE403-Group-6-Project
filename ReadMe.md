@@ -47,3 +47,8 @@ ollama list
 ```
 - The models downloaded should be shown
 - make sure to edit the python file to use the model downloaded.
+
+## Download required models
+```
+ollama pull nomic-embed-text
+```
