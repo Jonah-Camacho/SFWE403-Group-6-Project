@@ -7,53 +7,77 @@ function App() {
   const [messages, setMessages] = useState([
     {
       sender: "bot",
-      text: "Hello! My name is ChatCat. I am your personal guide to Software Engineering at the University of Arizona. What can I help you with today?",
+      text:
+        "Hello! My name is ChatCat. I am your personal guide to Software Engineering at the University of Arizona. What can I help you with today?",
     },
   ]);
   const [input, setInput] = useState("");
   const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState(false);
 
   const MAX_CHARS = 200;
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim() || loading) return;
     if (input.length > MAX_CHARS) {
       setError(true);
       return;
     }
 
-    // Add user message
-    setMessages([...messages, { sender: "user", text: input }]);
+    const userMsg = { sender: "user", text: input.trim() };
+    const nextHistory = [...messages, userMsg];
+
+    setMessages(nextHistory);
     setInput("");
     setError(false);
     setLoading(true);
 
-    // Simulate bot response
-    setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
-        {
-          sender: "bot",
-          text: "This is a placeholder response. (Later replaced with API.)",
-        },
+    try {
+      // Build history in backend format
+      const historyForApi = nextHistory.map(({ sender, text }) => ({
+        role: sender === "user" ? "user" : "assistant",
+        content: text,
+      }));
+
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: userMsg.text,
+          history: historyForApi,
+          new_session: false,
+          k_ctx: 5,
+        }),
+      });
+
+      if (!res.ok) {
+        const errText = await res.text();
+        throw new Error(errText || `HTTP ${res.status}`);
+      }
+
+      const data = await res.json(); // { reply: string }
+      setMessages([...nextHistory, { sender: "bot", text: data.reply }]);
+    } catch (e) {
+      setMessages([
+        ...nextHistory,
+        { sender: "bot", text: "Error contacting server: " + e.message },
       ]);
+    } finally {
       setLoading(false);
-    }, 1200);
-  };
-
-  const handleInputChange = (e) => {
-    const value = e.target.value;
-
-    if (value.length > MAX_CHARS) {
-      setError(true);
-      setInput(value.slice(0, MAX_CHARS));
-    } else {
-      setError(false);
-      setInput(value);
     }
   };
 
+const handleInputChange = (e) => {
+  const value = e.target.value;
+
+  if (value.length > MAX_CHARS) {
+    setError(true);
+    setInput(value.slice(0, MAX_CHARS));
+  } else {
+    setError(false);
+    setInput(value);
+  }
+};
   return (
     <div className="app">
       {/* Header/Nav-Bar */}
@@ -84,15 +108,17 @@ function App() {
           <input
             type="text"
             placeholder={
-              loading ? "Waiting for ChatCat to respond..." : "Type your message..."
+              loading
+                ? "Waiting for ChatCat to respond..."
+                : "Type your message..."
             }
             value={input}
             onChange={handleInputChange}
             onKeyDown={(e) => e.key === "Enter" && handleSend()}
-            disabled={loading} // 🆕 disable when loading
+            disabled={loading}
           />
           <button onClick={handleSend} disabled={loading}>
-            {"Send"} {/* 🆕 optional visual indicator */}
+            Send
           </button>
         </div>
 
