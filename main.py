@@ -7,6 +7,8 @@ from typing import List, Literal, Optional, Tuple
 import numpy as np
 import tiktoken
 import ollama
+from langdetect import detect, LangDetectException
+
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -17,8 +19,11 @@ from pydantic import BaseModel
 # Configuration (env-first; safe defaults)
 # -----------------------------------------------------------------------------
 EMBED_MODEL = os.getenv("EMBED_MODEL", "nomic-embed-text")
-LLM         = os.getenv("LLM", "gemma3:1b")
-DOC_PATH    = os.getenv("CHATBOT_DOC_PATH", r"F:\SFWE403-Group-6-Project\ChatBot.md")
+LLM         = os.getenv("LLM", "gemma3:4b")
+DOC_PATH = os.getenv(
+    "CHATBOT_DOC_PATH",
+    str((Path(__file__).resolve().parent / "ChatBot.md"))
+)
 MAX_TOKENS  = int(os.getenv("MAX_CHUNK_TOKENS", "450"))
 OVERLAP_TOK = int(os.getenv("CHUNK_OVERLAP_TOKENS", "60"))
 
@@ -30,12 +35,21 @@ OVERLAP_TOK = int(os.getenv("CHUNK_OVERLAP_TOKENS", "60"))
 # System prompts
 # -----------------------------------------------------------------------------
 SYSTEM_ASSISTANT = """
-You are the University of Arizona Software Engineering Degree Advisor chatbot.
+You are the University of Arizona Software Engineering Degree Advisor who only understands ENGLISH. If response is not in english, Do NOT answer any questions.
+
+RULES
+- You can ONLY answer questions that are asked in ENGLISH. If a question is asked in a different language, respond with: "I can only assist if the question is in english."
+- You will not even process questions that are not in ENGLISH.
+- If an input is not in ENGLISH, do NOT attempt to translate it or respond in any language other than ENGLISH.
+- If a language other than ENGLISH is detected, respond with: "I can only assist if the question is in english." and give them the option to re-ask in ENGLISH.
+- DO NOT answer questions that are not in ENGLISH under any circumstances.
+- If you are unsure about the language of the input, err on the side of caution and respond with the message about assisting only in ENGLISH.
+- do not provide resources or links of any kind if the input is not in ENGLISH.
+- Do NOT provide any next steps or suggestions if the input is not in ENGLISH.
 
 GOAL
 - Help prospective and current students understand UA Software Engineering options (e.g., BS/BA/BAS; online vs. in-person), admission requirements, transfer credit, prerequisite chains, curriculum maps, course sequencing, key policies, timelines, tuition/fees and aid, advising and contacts, and typical career outcomes.
 - Always answer using ONLY the provided CONTEXT (snippets from the local handbook/notes).
-- If a requested detail is not present in CONTEXT, say so briefly and suggest a next step (advising email/office, official catalog, or submitting an official transfer evaluation)—do NOT invent details.
 
 STYLE
 - Be concise and structured: short paragraphs and bullet points when helpful.
@@ -58,6 +72,12 @@ Return ONLY the refined retrieval query text. No extra commentary.
 # Tokenizer + chunking
 # -----------------------------------------------------------------------------
 enc = tiktoken.get_encoding("cl100k_base")
+
+def is_english(text: str) -> bool:
+    try:
+        return detect(text) == 'en'
+    except LangDetectException:
+        return False
 
 def tokens(s: str) -> int:
     return len(enc.encode(s))
@@ -253,6 +273,10 @@ def health():
 @app.post("/api/chat")
 def chat(req: ChatRequest):
     try:
+      
+        if req.message and not is_english(req.message):
+            return {"reply": "I can only assist if the question is in english."}
+
         history = [m.dict() for m in (req.history or [])]
 
         if req.message:
@@ -271,6 +295,7 @@ def chat(req: ChatRequest):
         return {"reply": reply}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.post("/api/sources")
 def sources(req: SourcesRequest):
