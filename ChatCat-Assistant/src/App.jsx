@@ -55,7 +55,8 @@ function App() {
         throw new Error(errText || `HTTP ${res.status}`);
       }
 
-      const data = await res.json(); // { reply: string }
+      // Backend returns { reply: string }
+      const data = await res.json();
       setMessages([...nextHistory, { sender: "bot", text: data.reply }]);
     } catch (e) {
       setMessages([
@@ -67,17 +68,18 @@ function App() {
     }
   };
 
-const handleInputChange = (e) => {
-  const value = e.target.value;
+  const handleInputChange = (e) => {
+    const value = e.target.value;
 
-  if (value.length > MAX_CHARS) {
-    setError(true);
-    setInput(value.slice(0, MAX_CHARS));
-  } else {
-    setError(false);
-    setInput(value);
-  }
-};
+    if (value.length > MAX_CHARS) {
+      setError(true);
+      setInput(value.slice(0, MAX_CHARS));
+    } else {
+      setError(false);
+      setInput(value);
+    }
+  };
+
   return (
     <div className="app">
       {/* Header/Nav-Bar */}
@@ -98,7 +100,12 @@ const handleInputChange = (e) => {
         <div className="chat-box">
           {messages.map((msg, index) => (
             <div key={index} className={`message ${msg.sender}`}>
-              <div className="bubble">{msg.text}</div>
+              <div
+                className="bubble"
+                style={{ whiteSpace: "pre-wrap", lineHeight: 1.4 }}
+              >
+                {msg.text}
+              </div>
             </div>
           ))}
         </div>
